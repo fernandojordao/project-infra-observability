@@ -1,0 +1,15 @@
+# Requisitos do Jenkins para executar o pipeline CI/CD
+
+# Pacotes do sistema (instalar com apt no host):
+docker.io
+maven
+kubectl
+kind
+git
+
+# Permissões necessárias:
+# Adicionar o usuário Jenkins ao grupo docker
+sudo usermod -aG docker jenkins
+
+# Reinicie a VM após adicionar o usuário ao grupo
+sudo reboot
