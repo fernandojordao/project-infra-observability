@@ -12,3 +12,4 @@ echo "🚀 Enviando imagem para o Docker Registry local..."
 docker push localhost:5000/java-app:latest
 
 echo "✅ Processo concluído com sucesso!"
+
