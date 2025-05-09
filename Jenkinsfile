@@ -10,7 +10,7 @@ pipeline {
     stages {
         #stage('Checkout') {
         #    steps {
-        #        git 'https://github.com/seu-usuario/java-app.git'
+        #        git 'https://github.com/fernandojordao/project-infra-observability.git'
         #    }
         #}
 
@@ -36,11 +36,18 @@ pipeline {
                 """
             }
         }
-
         stage('Deploy to Kubernetes') {
             steps {
-                sh "kubectl set image deployment/${DEPLOYMENT_NAME} ${DEPLOYMENT_NAME}=${IMAGE_NAME}:latest -n ${K8S_NAMESPACE}"
+                // Aplica os arquivos YAML da pasta /deploy
+                sh """
+                    kubectl apply -f deploy/ -n ${K8S_NAMESPACE}
+                   """
             }
         }
+        // stage('Deploy to Kubernetes') {
+        //     steps {
+        //         sh "kubectl set image deployment/${DEPLOYMENT_NAME} ${DEPLOYMENT_NAME}=${IMAGE_NAME}:latest -n ${K8S_NAMESPACE}"
+        //     }
+        // }
     }
 }
